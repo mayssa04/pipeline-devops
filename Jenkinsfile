@@ -3,7 +3,7 @@ def container_name="feature_container"
 node {
     
         stage('clone') {
-                git 'https://github.com/Java-Techie-jt/docker-jenkins-integration-sample.git'
+                git 'https://github.com/mayssa04/pipeline-devops.git'
                  sh "git rev-parse --short HEAD > .git/commit-id"
                 script {                        
                     commit_id = readFile('.git/commit-id').trim()
