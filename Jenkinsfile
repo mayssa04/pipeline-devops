@@ -17,15 +17,13 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven3.6.3') {
-                    sh 'mvn clean compile'
+            
+                def mavenHome = tool name: "maven3.6.3",type: "maven"
+                def mavenCMD  = "${mavenHome}/bin/mvn "
+                sh "${mavenCMD} clean package"
                 }
-            }
-        post {
-            always {
-               archiveArtifacts artifacts: 'target/*'
-            }
-        }
+            
+    
         }
 
         stage ('Testing Stage') {
