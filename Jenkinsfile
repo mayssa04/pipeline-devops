@@ -17,10 +17,9 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
+                 withMaven(maven : 'maven3.6.3') {
+                    sh '${mvnCmd} clean compile'
             
-                def mavenHome = tool name: "maven3.6.3",type: "maven"
-                def mavenCMD  = "${mavenHome}/bin/mvn "
-                sh "${mavenCMD} clean package"
                 }
             
     
@@ -30,7 +29,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven3.6.3') {
-                    sh 'mvn test'
+                    sh '${mvnCmd} test'
                 }
             }
            
