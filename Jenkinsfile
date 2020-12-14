@@ -13,7 +13,7 @@ node {
         stage ("maven compile"){
             def mavenHome = tool name: "maven3.6.3",type: "maven"
             def mavenCMD  = "${mavenHome}/bin/mvn "
-            sh "${mavenCMD} clean compile"
+            sh "${mavenCMD} clean package"
         }
     
        stage ("maven test"){
