@@ -27,19 +27,17 @@ node {
         }
           
         stage(' Build Docker image') {
-            steps {
                 echo 'Building....'
                 sh "docker build -t feature-image:${commit_id} ."
                 echo 'build complete'
-            }
+            
         }
         stage('Deploy to dev') {
-            steps {
                 echo'Deploying'
                 sh "docker stop  ${container_name}"
                 sh "docker run -d --rm -p 8081:8080 --name ${container_name} feature-image:${commit_id}"
                 echo 'deployment complete'
-            }
+            
         }
 
     
