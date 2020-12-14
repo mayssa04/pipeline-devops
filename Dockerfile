@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM maven:3.6.3-jdk-8 AS build-env
 EXPOSE 8080
-ADD */target/docker-jenkins-integration-sample.jar docker-jenkins-integration-sample.jar
+COPY --from=build /target/docker-jenkins-integration-sample.jar docker-jenkins-integration-sample.jar
 ENTRYPOINT ["java","-jar","/docker-jenkins-integration-sample.jar"]
