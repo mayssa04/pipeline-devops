@@ -56,7 +56,7 @@ pipeline {
                 echo'Deploying'
                 sh "docker stop  ${container_name}"
                 sh "docker rm  ${container_name}"
-                sh "docker run -p 8082:2222 -d --name ${container_name} feature-image:${commit_id}"
+                sh "docker run -p 80:80 -d --name ${container_name} feature-image:${commit_id}"
                 echo 'deployment complete'
             }
         }
