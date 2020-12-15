@@ -1,5 +1,5 @@
 def commit_id
-def container_name="feature_container"
+def container_name="feature-container"
 pipeline {
     agent any
 
