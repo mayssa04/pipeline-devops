@@ -54,8 +54,8 @@ pipeline {
         stage('Deploy to dev') {
             steps {
                 echo'Deploying'
-                //sh "docker stop  ${container_name}"
-                sh "docker run -d -p 8082:8080 --name ${container_name} feature-image:${commit_id}"
+                sh "docker stop  ${container_name}"
+                sh "docker run -p 8082:8080 --name ${container_name} feature-image:${commit_id}"
                 echo 'deployment complete'
             }
         }
