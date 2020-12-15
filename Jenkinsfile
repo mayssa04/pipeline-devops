@@ -18,7 +18,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven3.6.3') {
-                    sh 'mvn clean compile'
+                    sh 'mvn clean install'
                 }
             }
         post {
